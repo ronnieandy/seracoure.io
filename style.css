@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
   --bg:#FAFAF8;
@@ -23,7 +23,7 @@
   --success-soft:#E9F5F0;
   --mono: 'JetBrains Mono', monospace;
   --sans: 'Inter', sans-serif;
-  --display: 'Space Grotesk', sans-serif;
+  --display: 'Libre Franklin', sans-serif;
   --radius: 12px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -68,7 +68,7 @@ nav .wrap{display:flex; align-items:center; justify-content:space-between; heigh
 .logo{display:flex; align-items:center; gap:10px; font-family:var(--display); font-weight:700; font-size:17px; letter-spacing:-0.01em;}
 .logo .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft); animation: pulse 2.4s ease-in-out infinite;}
 @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.5;} }
-.navlinks{display:flex; align-items:center; gap:30px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
+.navlinks{display:flex; align-items:center; gap:30px; font-family:var(--sans); font-size:13.5px; font-weight:500; color:var(--text-dim);}
 .navlinks a{position:relative; padding:4px 0; transition:color .15s;}
 .navlinks a::after{
   content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--accent);
@@ -80,7 +80,7 @@ nav .wrap{display:flex; align-items:center; justify-content:space-between; heigh
 .gh-btn{
   display:flex; align-items:center; gap:8px;
   border:1px solid var(--border-bright); padding:8px 14px; border-radius:8px;
-  font-family:var(--mono); font-size:13px; font-weight:500; color:var(--text);
+  font-family:var(--sans); font-size:13.5px; font-weight:600; color:var(--text);
   background:var(--surface);
   transition:border-color .15s, background .15s, transform .15s, box-shadow .15s;
 }
@@ -92,7 +92,7 @@ nav .wrap{display:flex; align-items:center; justify-content:space-between; heigh
 
 /* ---------- SHARED TYPE ---------- */
 .eyebrow{
-  font-family:var(--mono); font-size:12.5px; color:var(--accent);
+  font-family:var(--sans); font-weight:600; font-size:12.5px; color:var(--accent);
   letter-spacing:0.1em; text-transform:uppercase;
   display:flex; align-items:center; gap:8px; margin-bottom:18px;
 }
@@ -110,7 +110,7 @@ section{padding:96px 0; position:relative; z-index:1;}
 /* ---------- BUTTONS ---------- */
 .btn-primary{
   background:var(--accent); color:#fff;
-  font-family:var(--mono); font-weight:600; font-size:14px;
+  font-family:var(--sans); font-weight:600; font-size:14.5px;
   padding:13px 22px; border-radius:8px;
   box-shadow:0 1px 2px rgba(23,24,27,0.05), 0 10px 24px -10px var(--accent-glow);
   transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
@@ -119,7 +119,7 @@ section{padding:96px 0; position:relative; z-index:1;}
 .btn-primary:hover{transform:translateY(-2px); background:var(--accent-dim); box-shadow:0 14px 28px -10px var(--accent-glow);}
 .btn-secondary{
   border:1px solid var(--border-bright); color:var(--text); background:var(--surface);
-  font-family:var(--mono); font-size:14px; font-weight:500;
+  font-family:var(--sans); font-size:14.5px; font-weight:600;
   padding:13px 20px; border-radius:8px; transition:border-color .15s, background .15s;
   display:inline-flex; align-items:center; gap:8px;
 }
@@ -169,7 +169,7 @@ section{padding:96px 0; position:relative; z-index:1;}
 .card:hover{border-color:var(--border-bright); transform:translateY(-3px); box-shadow:0 16px 32px -18px rgba(23,24,27,0.18);}
 
 /* ---------- FOOTER ---------- */
-footer{border-top:1px solid var(--border); padding:32px 0; font-family:var(--mono); font-size:12.5px; color:var(--text-faint); position:relative; z-index:1;}
+footer{border-top:1px solid var(--border); padding:32px 0; font-family:var(--sans); font-size:13px; font-weight:500; color:var(--text-faint); position:relative; z-index:1;}
 footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
 footer .foot-links{display:flex; gap:22px;}
 footer a:hover{color:var(--accent);}
