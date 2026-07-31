@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shellmate — the assistant that lives in your terminal</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  header.hero{padding:96px 0 80px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 1fr; gap:60px; align-items:center;}
+  h1{font-size:48px; margin-bottom:22px;}
+  .hero p.lead{max-width:480px; margin-bottom:32px;}
+
+  .why-row{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .why-row .card .num{font-family:var(--mono); font-size:12px; color:var(--accent-dim); margin-bottom:14px;}
+  .why-row .card h3{font-family:var(--mono); font-size:16px; margin-bottom:10px; letter-spacing:-0.01em;}
+  .why-row .card p{color:var(--text-dim); font-size:14px;}
+
+  .preview-row{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .preview-row .mini-ls{background:var(--surface); border:1px solid var(--border); border-radius:8px; font-family:var(--mono); font-size:13px; overflow:hidden;}
+  .mini-ls .row{display:flex; gap:14px; padding:14px 18px; border-bottom:1px solid var(--border);}
+  .mini-ls .row:last-child{border-bottom:none;}
+  .mini-ls .row .name{color:var(--accent); min-width:120px;}
+  .mini-ls .row .desc{color:var(--text-dim);}
+  .link-more{font-family:var(--mono); font-size:13px; color:var(--accent); display:inline-flex; gap:6px; margin-top:20px;}
+  .link-more:hover{gap:10px; transition:gap .15s;}
+
+  .install-row{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+
+  @media (max-width: 860px){
+    .hero-grid, .preview-row, .install-row{grid-template-columns:1fr; gap:36px;}
+    .why-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>shellmate</div>
+    <div class="navlinks navlinks-hide-mobile">
+      <a href="index.html" class="active">home</a>
+      <a href="features.html">features</a>
+      <a href="docs.html">docs</a>
+      <a href="changelog.html">changelog</a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <a class="gh-btn" href="#" onclick="return false;">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      star on github
+    </a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">open source · runs locally</div>
+      <h1>An assistant that <span class="accent">lives</span><br>in your terminal.</h1>
+      <p class="lead">Shellmate reads your repo, answers questions about your codebase, and runs the commands you'd normally look up — without leaving the shell you already work in.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="docs.html">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          install shellmate
+        </a>
+        <a class="btn-secondary" href="features.html">see what it does →</a>
+      </div>
+    </div>
+
+    <div class="terminal">
+      <div class="term-bar">
+        <span></span><span></span><span></span>
+        <span class="term-title">~/projects/api-service — shellmate</span>
+      </div>
+      <div class="term-body" id="termBody"></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">why it's different</div>
+      <h2>Not another chat window bolted onto your IDE.</h2>
+      <p>Shellmate is built around the one interface every developer already trusts: the command line.</p>
+    </div>
+    <div class="why-row">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Full repo context</h3>
+        <p>Indexes your working tree on launch, so every answer already knows your file structure, dependencies, and recent history.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Nothing runs without asking</h3>
+        <p>Every suggested command shows its full effect before execution. Nothing writes to disk or runs remotely without your confirmation.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Bring your own model</h3>
+        <p>Point it at a local model or any API-compatible provider. Your code only leaves your machine if you choose a remote one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="preview-row">
+      <div>
+        <div class="eyebrow">a closer look</div>
+        <h2 style="font-size:28px; margin-bottom:14px;">Six commands, one habit to build.</h2>
+        <p class="lead" style="margin-bottom:0;">From explaining unfamiliar code to reviewing your own PR before you open it — see the full command reference and what each one actually does.</p>
+        <a class="link-more" href="features.html">browse all features →</a>
+      </div>
+      <div class="mini-ls">
+        <div class="row"><span class="name">explain.sh</span><span class="desc">explain any file or function in plain language</span></div>
+        <div class="row"><span class="name">fix-error.sh</span><span class="desc">turn a stack trace into a reviewed patch</span></div>
+        <div class="row"><span class="name">review-pr.sh</span><span class="desc">review your branch before you open the PR</span></div>
+        <div class="row"><span class="name">run-safe.sh</span><span class="desc">confirm-before-execute shell commands</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="install-row">
+      <div>
+        <div class="eyebrow">get started</div>
+        <h2 style="font-size:28px; margin-bottom:14px;">Install takes under a minute.</h2>
+        <p class="lead" style="margin-bottom:24px;">No account, no cloud dependency by default. Full setup, configuration, and command reference live in the docs.</p>
+        <a class="btn-secondary" href="docs.html">read the docs →</a>
+      </div>
+      <div class="code-block">
+        <span class="p1">$</span>&nbsp;<span id="installCmd">curl -fsSL shellmate.dev/install <span class="p2">|</span> sh</span>
+        <button class="copy-btn" data-copy-target="#installCmd">copy</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-final" style="text-align:center; padding:80px 0 96px; border-top:1px solid var(--border);">
+  <div class="wrap">
+    <h2 style="font-size:32px; margin-bottom:16px;">Try it in the repo you're in right now.</h2>
+    <p class="lead" style="margin:0 auto 30px; text-align:center;">Install takes under a minute. Uninstall is one line too.</p>
+    <a class="btn-primary" href="docs.html">get started →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>shellmate — MIT licensed</span>
+    <div class="foot-links">
+      <a href="features.html">features</a>
+      <a href="docs.html">docs</a>
+      <a href="changelog.html">changelog</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const lines = [
+    { text: "$ shellmate", type: "prompt" },
+    { text: "Reading repository context...", type: "muted" },
+    { text: "✓ 214 files indexed  ·  main branch  ·  Node 20", type: "out" },
+    { text: "", type: "muted" },
+    { text: "$ ask \"why is /checkout returning 500s?\"", type: "prompt" },
+    { text: "Checking recent commits on payments/checkout.ts...", type: "muted" },
+    { text: "→ line 88: null check removed in commit 4a1c9e2", type: "out" },
+    { text: "→ suggested fix ready. run `shellmate patch` to apply.", type: "out" }
+  ];
+  const body = document.getElementById('termBody');
+  let li = 0, ci = 0;
+  function typeNext(){
+    if(li >= lines.length){
+      const cur = document.createElement('span');
+      cur.className = 'cursor';
+      body.appendChild(cur);
+      return;
+    }
+    const line = lines[li];
+    let div = body.children[li];
+    if(!div){ div = document.createElement('div'); div.className = 'line ' + line.type; body.appendChild(div); }
+    if(ci <= line.text.length){
+      div.textContent = line.text.slice(0, ci);
+      ci++;
+      setTimeout(typeNext, line.text.length === 0 ? 60 : (14 + Math.random()*18));
+    } else { li++; ci = 0; setTimeout(typeNext, 220); }
+  }
+  typeNext();
+</script>
+
+</body>
+</html>

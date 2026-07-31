@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docs — Shellmate</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .page-head{padding:72px 0 20px;}
+  .page-head h1{font-size:38px; margin-bottom:14px;}
+  .page-head p{color:var(--text-dim); font-size:16px; max-width:560px;}
+
+  .docs-layout{display:grid; grid-template-columns:220px 1fr; gap:56px; padding:56px 0 100px; align-items:start;}
+  .doc-nav{position:sticky; top:88px; font-family:var(--mono); font-size:13px;}
+  .doc-nav .group{margin-bottom:26px;}
+  .doc-nav .group-label{color:var(--text-faint); font-size:11px; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;}
+  .doc-nav a{display:block; color:var(--text-dim); padding:5px 0; border-left:2px solid transparent; padding-left:12px; margin-left:-13px; transition:color .15s, border-color .15s;}
+  .doc-nav a:hover{color:var(--text);}
+  .doc-nav a.active{color:var(--accent); border-left-color:var(--accent);}
+
+  .doc-section{margin-bottom:64px; scroll-margin-top:88px;}
+  .doc-section h2{font-size:22px; margin-bottom:16px;}
+  .doc-section p{color:var(--text-dim); font-size:15px; margin-bottom:18px; max-width:640px;}
+
+  .install-tabs{display:flex; gap:2px;}
+  .tab{
+    font-family:var(--mono); font-size:13px; padding:9px 16px;
+    background:var(--surface); color:var(--text-faint);
+    border:1px solid var(--border); border-bottom:none;
+    border-radius:8px 8px 0 0; cursor:pointer;
+  }
+  .tab.active{color:var(--accent); background:var(--bg-raised); border-color:var(--border-bright);}
+  #installBlock{border-radius:0 8px 8px 8px; border-top:none;}
+
+  .steps{list-style:none; counter-reset:step; max-width:640px;}
+  .steps li{
+    counter-increment:step; position:relative; padding-left:40px; margin-bottom:22px;
+    font-size:14.5px; color:var(--text-dim);
+  }
+  .steps li::before{
+    content:counter(step); position:absolute; left:0; top:-1px;
+    width:26px; height:26px; border:1px solid var(--border-bright); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:12px; color:var(--accent);
+  }
+  .steps li strong{color:var(--text); display:block; margin-bottom:3px; font-size:15px;}
+  .steps code{font-family:var(--mono); background:var(--surface); border:1px solid var(--border); padding:2px 7px; border-radius:4px; color:var(--accent); font-size:13px;}
+
+  table.config{width:100%; border-collapse:collapse; font-size:14px; max-width:720px;}
+  table.config th{
+    text-align:left; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--text-faint); padding:10px 14px; border-bottom:1px solid var(--border-bright);
+  }
+  table.config td{padding:14px 14px; border-bottom:1px solid var(--border); color:var(--text-dim); vertical-align:top;}
+  table.config td:first-child{font-family:var(--mono); color:var(--accent); white-space:nowrap;}
+  table.config td:last-child{color:var(--text-faint); font-family:var(--mono); font-size:12.5px;}
+
+  @media (max-width: 860px){
+    .docs-layout{grid-template-columns:1fr; gap:32px;}
+    .doc-nav{position:static;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>shellmate</div>
+    <div class="navlinks navlinks-hide-mobile">
+      <a href="index.html">home</a>
+      <a href="features.html">features</a>
+      <a href="docs.html" class="active">docs</a>
+      <a href="changelog.html">changelog</a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <a class="gh-btn" href="#" onclick="return false;">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      star on github
+    </a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="eyebrow">documentation</div>
+    <h1>Everything you need to run it.</h1>
+    <p>Installation, configuration, and the full command reference — kept short on purpose.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="docs-layout">
+    <div class="doc-nav" id="docNav">
+      <div class="group">
+        <div class="group-label">Getting started</div>
+        <a href="#install" class="active">Installation</a>
+        <a href="#quickstart">Quick start</a>
+      </div>
+      <div class="group">
+        <div class="group-label">Configuration</div>
+        <a href="#config">Config reference</a>
+        <a href="#models">Model providers</a>
+      </div>
+      <div class="group">
+        <div class="group-label">More</div>
+        <a href="#uninstall">Uninstalling</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="doc-section" id="install">
+        <h2>Installation</h2>
+        <p>Pick whichever package manager you already use. All three install the same binary.</p>
+        <div class="install-tabs">
+          <div class="tab active" data-tab="curl">curl</div>
+          <div class="tab" data-tab="brew">brew</div>
+          <div class="tab" data-tab="npm">npm</div>
+        </div>
+        <div class="code-block" id="installBlock">
+          <span id="installCmd"><span class="p1">$</span> curl -fsSL shellmate.dev/install <span class="p2">|</span> sh</span>
+          <button class="copy-btn" data-copy-target="#installCmd">copy</button>
+        </div>
+      </div>
+
+      <div class="doc-section" id="quickstart">
+        <h2>Quick start</h2>
+        <p>Three commands from install to your first answer.</p>
+        <ol class="steps">
+          <li><strong>Run it inside a repo</strong>Navigate to any git repository and run <code>shellmate</code>. It indexes the working tree on first launch.</li>
+          <li><strong>Ask a question</strong>Try <code>shellmate ask "what does this function do"</code> pointed at any file.</li>
+          <li><strong>Review before anything runs</strong>Any suggested shell command shows its full effect and waits for <code>y/N</code> before executing.</li>
+        </ol>
+      </div>
+
+      <div class="doc-section" id="config">
+        <h2>Config reference</h2>
+        <p>Settings live in <code style="font-family:var(--mono); background:var(--surface); border:1px solid var(--border); padding:2px 7px; border-radius:4px; color:var(--accent);">.shellmate.toml</code> at your repo root.</p>
+        <table class="config">
+          <tr><th>Key</th><th>Description</th><th>Default</th></tr>
+          <tr><td>provider</td><td>Which model backend to use for requests</td><td>local</td></tr>
+          <tr><td>confirm_writes</td><td>Require confirmation before any command executes</td><td>true</td></tr>
+          <tr><td>context_depth</td><td>How many directory levels to index on launch</td><td>3</td></tr>
+          <tr><td>memory</td><td>Persist recalled conventions between sessions</td><td>true</td></tr>
+        </table>
+      </div>
+
+      <div class="doc-section" id="models">
+        <h2>Model providers</h2>
+        <p>Shellmate ships with a local model by default. Swap in any API-compatible provider by setting <code style="font-family:var(--mono); background:var(--surface); border:1px solid var(--border); padding:2px 7px; border-radius:4px; color:var(--accent);">provider</code> in your config. Your code is only sent off-device if you choose a remote one — local stays fully offline.</p>
+      </div>
+
+      <div class="doc-section" id="uninstall">
+        <h2>Uninstalling</h2>
+        <p>One command, no residue.</p>
+        <div class="code-block">
+          <span id="uninstallCmd"><span class="p1">$</span> shellmate uninstall</span>
+          <button class="copy-btn" data-copy-target="#uninstallCmd">copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>shellmate — MIT licensed</span>
+    <div class="foot-links">
+      <a href="index.html">home</a>
+      <a href="features.html">features</a>
+      <a href="changelog.html">changelog</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const cmds = {
+    curl: '<span class="p1">$</span> curl -fsSL shellmate.dev/install <span class="p2">|</span> sh',
+    brew: '<span class="p1">$</span> brew install shellmate',
+    npm:  '<span class="p1">$</span> npm install -g shellmate'
+  };
+  document.querySelectorAll('.tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('installCmd').innerHTML = cmds[tab.dataset.tab];
+    });
+  });
+
+  // Scrollspy for doc nav
+  const sections = document.querySelectorAll('.doc-section');
+  const navLinks = document.querySelectorAll('#docNav a');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        navLinks.forEach(l=>l.classList.remove('active'));
+        const link = document.querySelector('#docNav a[href="#'+entry.target.id+'"]');
+        if(link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>

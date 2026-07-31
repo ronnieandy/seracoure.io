@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog — Shellmate</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .page-head{padding:72px 0 20px;}
+  .page-head h1{font-size:38px; margin-bottom:14px;}
+  .page-head p{color:var(--text-dim); font-size:16px; max-width:560px;}
+
+  .stats-row{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:72px;}
+  .stat{background:var(--surface); padding:26px 22px;}
+  .stat .num{font-family:var(--mono); font-size:28px; font-weight:800; color:var(--accent);}
+  .stat .label{font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-top:6px; text-transform:uppercase; letter-spacing:0.06em;}
+
+  .log{position:relative; padding-left:28px; max-width:720px;}
+  .log::before{content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--border-bright);}
+  .entry{position:relative; padding-bottom:44px;}
+  .entry:last-child{padding-bottom:0;}
+  .entry::before{
+    content:""; position:absolute; left:-28px; top:4px; width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--accent-dim);
+  }
+  .entry.latest::before{border-color:var(--accent); box-shadow:0 0 10px var(--accent-glow);}
+  .entry .tag-row{display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap;}
+  .entry .version{font-family:var(--mono); font-weight:700; font-size:15px; color:var(--accent);}
+  .entry .date{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+  .entry .badge{font-family:var(--mono); font-size:10.5px; padding:2px 8px; border-radius:4px; text-transform:uppercase; letter-spacing:0.05em;}
+  .badge.feat{background:var(--accent-soft); color:var(--accent);}
+  .badge.fix{background:var(--amber-soft); color:var(--amber);}
+  .badge.breaking{background:var(--red-soft); color:var(--red);}
+  .entry ul{margin:10px 0 0 0; padding-left:18px; color:var(--text-dim); font-size:14px;}
+  .entry ul li{margin-bottom:5px;}
+  .entry .hash{font-family:var(--mono); font-size:11.5px; color:var(--text-faint); margin-top:10px;}
+
+  @media (max-width: 860px){
+    .stats-row{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>shellmate</div>
+    <div class="navlinks navlinks-hide-mobile">
+      <a href="index.html">home</a>
+      <a href="features.html">features</a>
+      <a href="docs.html">docs</a>
+      <a href="changelog.html" class="active">changelog</a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <a class="gh-btn" href="#" onclick="return false;">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      star on github
+    </a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="eyebrow">changelog</div>
+    <h1>Maintained in the open.</h1>
+    <p>Every release, in order, with nothing smoothed over — including the breaking ones.</p>
+  </div>
+</header>
+
+<section style="padding-top:24px;">
+  <div class="wrap">
+    <div class="stats-row">
+      <div class="stat"><div class="num">14.2k</div><div class="label">stars</div></div>
+      <div class="stat"><div class="num">312</div><div class="label">contributors</div></div>
+      <div class="stat"><div class="num">2,847</div><div class="label">commits</div></div>
+      <div class="stat"><div class="num">99.1%</div><div class="label">uptime, local</div></div>
+    </div>
+
+    <div class="log">
+      <div class="entry latest">
+        <div class="tag-row">
+          <span class="version">v2.4.0</span>
+          <span class="date">July 14, 2026</span>
+          <span class="badge feat">feature</span>
+        </div>
+        <ul>
+          <li>Added <code style="color:var(--accent); font-family:var(--mono);">review-pr.sh</code> — reviews your current branch against main before you open a pull request.</li>
+          <li>Plugin system now supports any executable that reads stdin, not just shell scripts.</li>
+          <li>Indexing speed improved roughly 3x on repositories over 5,000 files.</li>
+        </ul>
+        <div class="hash">7f3a9c1 → 4b21e08</div>
+      </div>
+
+      <div class="entry">
+        <div class="tag-row">
+          <span class="version">v2.3.1</span>
+          <span class="date">June 29, 2026</span>
+          <span class="badge fix">fix</span>
+        </div>
+        <ul>
+          <li>Fixed a race condition where <code style="color:var(--accent); font-family:var(--mono);">recall.log</code> entries could be written twice in parallel sessions.</li>
+          <li>Corrected token counting for repositories with very large single files.</li>
+        </ul>
+        <div class="hash">2c88f41 → 7f3a9c1</div>
+      </div>
+
+      <div class="entry">
+        <div class="tag-row">
+          <span class="version">v2.3.0</span>
+          <span class="date">June 10, 2026</span>
+          <span class="badge feat">feature</span>
+        </div>
+        <ul>
+          <li>Introduced <code style="color:var(--accent); font-family:var(--mono);">recall.log</code> — project conventions now persist across sessions.</li>
+          <li>Added support for local models via any OpenAI-compatible endpoint.</li>
+        </ul>
+        <div class="hash">9a01d3e → 2c88f41</div>
+      </div>
+
+      <div class="entry">
+        <div class="tag-row">
+          <span class="version">v2.0.0</span>
+          <span class="date">May 2, 2026</span>
+          <span class="badge breaking">breaking</span>
+        </div>
+        <ul>
+          <li>Config format moved from <code style="color:var(--accent); font-family:var(--mono);">.shellmate.json</code> to <code style="color:var(--accent); font-family:var(--mono);">.shellmate.toml</code>. Old configs are auto-migrated on first run.</li>
+          <li><code style="color:var(--accent); font-family:var(--mono);">confirm_writes</code> now defaults to <code style="color:var(--accent); font-family:var(--mono);">true</code> for every install.</li>
+        </ul>
+        <div class="hash">e15b7a2 → 9a01d3e</div>
+      </div>
+
+      <div class="entry">
+        <div class="tag-row">
+          <span class="version">v1.0.0</span>
+          <span class="date">February 18, 2026</span>
+          <span class="badge feat">feature</span>
+        </div>
+        <ul>
+          <li>First stable release. Core commands: <code style="color:var(--accent); font-family:var(--mono);">explain</code>, <code style="color:var(--accent); font-family:var(--mono);">fix</code>, <code style="color:var(--accent); font-family:var(--mono);">ask</code>.</li>
+        </ul>
+        <div class="hash">a40c119 → e15b7a2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>shellmate — MIT licensed</span>
+    <div class="foot-links">
+      <a href="index.html">home</a>
+      <a href="features.html">features</a>
+      <a href="docs.html">docs</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

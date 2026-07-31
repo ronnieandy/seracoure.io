@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features — Shellmate</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .page-head{padding:72px 0 20px;}
+  .page-head h1{font-size:38px; margin-bottom:14px;}
+  .page-head p{color:var(--text-dim); font-size:16px; max-width:560px;}
+
+  .showcase{padding:56px 0 100px;}
+  .showcase-grid{display:grid; grid-template-columns:340px 1fr; gap:0; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--surface);}
+  .cmd-list{border-right:1px solid var(--border);}
+  .cmd-item{
+    padding:20px 22px; border-bottom:1px solid var(--border); cursor:pointer;
+    transition:background .15s; position:relative;
+  }
+  .cmd-item:last-child{border-bottom:none;}
+  .cmd-item:hover{background:rgba(181,86,59,0.04);}
+  .cmd-item.active{background:rgba(181,86,59,0.07);}
+  .cmd-item.active::before{content:""; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--accent); box-shadow:0 0 10px var(--accent-glow);}
+  .cmd-item .perm{font-family:var(--mono); font-size:11px; color:var(--accent-dim); display:block; margin-bottom:6px;}
+  .cmd-item .name{font-family:var(--mono); font-size:14.5px; font-weight:600; color:var(--text); display:block; margin-bottom:5px;}
+  .cmd-item.active .name{color:var(--accent);}
+  .cmd-item .desc{font-size:13px; color:var(--text-dim); line-height:1.5;}
+
+  .cmd-preview{padding:0; display:flex; flex-direction:column;}
+  .preview-term{padding:26px 28px; font-family:var(--mono); font-size:13.5px; color:var(--text-dim); flex:1; min-height:340px;}
+  .preview-term .line{margin-bottom:8px; white-space:pre-wrap;}
+  .preview-term .prompt{color:var(--accent);}
+  .preview-term .out{color:var(--text);}
+  .preview-term .muted{color:var(--text-faint);}
+  .preview-term .diff-add{color:var(--success); background:var(--success-soft); display:block; padding:2px 8px; border-radius:3px; margin:2px 0;}
+  .preview-term .diff-rem{color:var(--red); background:var(--red-soft); display:block; padding:2px 8px; border-radius:3px; margin:2px 0; text-decoration:line-through; opacity:0.75;}
+
+  @media (max-width: 860px){
+    .showcase-grid{grid-template-columns:1fr;}
+    .cmd-list{border-right:none; border-bottom:1px solid var(--border);}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>shellmate</div>
+    <div class="navlinks navlinks-hide-mobile">
+      <a href="index.html">home</a>
+      <a href="features.html" class="active">features</a>
+      <a href="docs.html">docs</a>
+      <a href="changelog.html">changelog</a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <a class="gh-btn" href="#" onclick="return false;">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      star on github
+    </a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="eyebrow">features</div>
+    <h1>Six commands. Click one to see it run.</h1>
+    <p>Every Shellmate command is a small, single-purpose script — same philosophy as the Unix tools it sits next to.</p>
+  </div>
+</header>
+
+<section class="showcase">
+  <div class="wrap">
+    <div class="showcase-grid">
+      <div class="cmd-list" id="cmdList">
+        <div class="cmd-item active" data-cmd="explain">
+          <span class="perm">-rwxr-xr-x · 4.1k</span>
+          <span class="name">explain.sh</span>
+          <span class="desc">Explain any file or function in plain language, with surrounding context already factored in.</span>
+        </div>
+        <div class="cmd-item" data-cmd="fix">
+          <span class="perm">-rwxr-xr-x · 2.8k</span>
+          <span class="name">fix-error.sh</span>
+          <span class="desc">Paste a stack trace, get the failing line and a reviewed patch as a diff.</span>
+        </div>
+        <div class="cmd-item" data-cmd="review">
+          <span class="perm">-rwxr-xr-x · 6.4k</span>
+          <span class="name">review-pr.sh</span>
+          <span class="desc">Reviews your current branch against main before you open the PR.</span>
+        </div>
+        <div class="cmd-item" data-cmd="recall">
+          <span class="perm">-rw-r--r-- · 1.2k</span>
+          <span class="name">recall.log</span>
+          <span class="desc">Remembers project conventions across sessions.</span>
+        </div>
+        <div class="cmd-item" data-cmd="run">
+          <span class="perm">-rwxr-xr-x · 3.7k</span>
+          <span class="name">run-safe.sh</span>
+          <span class="desc">Shows exactly what a command will do, then waits for confirmation.</span>
+        </div>
+        <div class="cmd-item" data-cmd="plugins">
+          <span class="perm">drwxr-xr-x · —</span>
+          <span class="name">plugins/</span>
+          <span class="desc">Extend it with your own commands in any language.</span>
+        </div>
+      </div>
+
+      <div class="cmd-preview">
+        <div class="term-bar">
+          <span></span><span></span><span></span>
+          <span class="term-title" id="previewTitle">explain.sh</span>
+        </div>
+        <div class="preview-term" id="previewBody"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>shellmate — MIT licensed</span>
+    <div class="foot-links">
+      <a href="index.html">home</a>
+      <a href="docs.html">docs</a>
+      <a href="changelog.html">changelog</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const demos = {
+    explain: {
+      title: "~/api-service — explain.sh",
+      lines: [
+        ["prompt","$ shellmate explain src/auth/token.ts"],
+        ["muted","Reading file (118 lines) and 3 imported modules..."],
+        ["out","This module issues and verifies signed session tokens."],
+        ["out","→ issueToken() signs a payload with HS256 and a 15min expiry."],
+        ["out","→ verifyToken() throws TokenExpiredError after that window."],
+        ["muted","Used by: middleware/requireAuth.ts, routes/refresh.ts"]
+      ]
+    },
+    fix: {
+      title: "~/api-service — fix-error.sh",
+      lines: [
+        ["prompt","$ shellmate fix --paste"],
+        ["muted","TypeError: Cannot read properties of null (reading 'id')"],
+        ["out","→ found: payments/checkout.ts:88"],
+        ["out","→ cause: user session lookup can return null after logout"],
+        ["diff-rem","- const id = session.user.id;"],
+        ["diff-add","+ const id = session.user?.id ?? null;"],
+        ["muted","run `shellmate patch` to apply this diff"]
+      ]
+    },
+    review: {
+      title: "~/api-service — review-pr.sh",
+      lines: [
+        ["prompt","$ shellmate review --against main"],
+        ["muted","Comparing 14 changed files against main..."],
+        ["out","✓ no obvious logic regressions found"],
+        ["out","⚠ routes/webhook.ts: new endpoint has no rate limit"],
+        ["out","⚠ 2 new functions have no matching test file"],
+        ["muted","summary ready — post as PR description? [y/N]"]
+      ]
+    },
+    recall: {
+      title: "~/api-service — recall.log",
+      lines: [
+        ["prompt","$ shellmate recall list"],
+        ["out","→ \"we use zod for all request validation\" — added 12 days ago"],
+        ["out","→ \"never log raw request bodies\" — added 30 days ago"],
+        ["out","→ \"prefer composition over inheritance in /services\" — added 41 days ago"],
+        ["muted","3 conventions active for this repo"]
+      ]
+    },
+    run: {
+      title: "~/api-service — run-safe.sh",
+      lines: [
+        ["prompt","$ shellmate ask \"how do I remove the last two commits\""],
+        ["out","suggested: git reset --hard HEAD~2"],
+        ["muted","⚠ this discards commits and unstaged changes permanently"],
+        ["out","run this now? [y/N]"]
+      ]
+    },
+    plugins: {
+      title: "~/api-service — plugins/",
+      lines: [
+        ["prompt","$ shellmate plugins list"],
+        ["out","→ db-inspect     reads schema, answers questions about tables"],
+        ["out","→ changelog-gen  drafts release notes from merged PRs"],
+        ["muted","a plugin is any executable that reads stdin and writes stdout"],
+        ["out","$ shellmate plugins add ./my-plugin.sh"],
+        ["muted","✓ installed. available as `shellmate my-plugin`"]
+      ]
+    }
+  };
+
+  const previewBody = document.getElementById('previewBody');
+  const previewTitle = document.getElementById('previewTitle');
+  let typeToken = 0;
+
+  function renderDemo(key){
+    const demo = demos[key];
+    previewTitle.textContent = demo.title;
+    previewBody.innerHTML = '';
+    const myToken = ++typeToken;
+    let li = 0, ci = 0;
+
+    function typeNext(){
+      if(myToken !== typeToken) return;
+      if(li >= demo.lines.length){
+        const cur = document.createElement('span');
+        cur.className = 'cursor';
+        previewBody.appendChild(cur);
+        return;
+      }
+      const [cls, text] = demo.lines[li];
+      let div = previewBody.children[li];
+      if(!div){ div = document.createElement('div'); div.className = 'line ' + cls; previewBody.appendChild(div); }
+      if(ci <= text.length){
+        div.textContent = text.slice(0, ci);
+        ci++;
+        setTimeout(typeNext, 10 + Math.random()*14);
+      } else { li++; ci = 0; setTimeout(typeNext, 160); }
+    }
+    typeNext();
+  }
+
+  document.querySelectorAll('.cmd-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.cmd-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      renderDemo(item.dataset.cmd);
+    });
+  });
+
+  renderDemo('explain');
+</script>
+
+</body>
+</html>
