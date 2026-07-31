@@ -23,7 +23,7 @@
   --success-soft:#E9F5F0;
   --mono: 'JetBrains Mono', monospace;
   --sans: 'Inter', sans-serif;
-  --display: 'Libre Franklin', sans-serif;
+  --display: 'Inter', sans-serif;
   --radius: 12px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
