@@ -1,10 +1,13 @@
 :root {
-    --terracotta: #C45A3A;
-    --forest: #3F6F55;
-    --light-brown: #C8A47A;
-    --sand: #EFE7DD;
-    --charcoal: #2A2A2A;
-    --gold: #D9C7A1;
+  --terracotta: #C45A3A;
+  --gold: #D9C7A1;
+  --light-brown: #C8A47A;
+  --sand: #EFE7DD;
+  --charcoal: #2A2A2A;
+  --taupe: #A08F7A; /* replaces green */
+  --bg: var(--sand);
+  --text: var(--charcoal);
+  --card-bg: #ffffff;
 }
 
 body {
