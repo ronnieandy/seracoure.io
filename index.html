@@ -1,52 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seracoure — Earthy Luxury Corporate Fusion</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seracoure — Earthy Luxury Corporate Fusion</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<header class="hero">
-    <div class="hero-content">
-        <h1>Seracoure Corporate Fusion</h1>
-        <p>Where executive precision meets earthy luxury — crafted for leaders, innovators, and visionaries.</p>
+<header class="top-nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <span class="logo-mark">S</span>
+      <span class="logo-text">Seracoure</span>
     </div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#clients">Clients</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle">☾</button>
+  </div>
 </header>
 
-<section class="section">
-    <h2>Our Expertise</h2>
-    <div class="services">
-        <div class="service-box">
-            <h3>Executive Strategy</h3>
-            <p>High‑level guidance blending corporate clarity with grounded, sustainable direction.</p>
-        </div>
-        <div class="service-box">
-            <h3>Luxury Brand Architecture</h3>
-            <p>Premium identity systems rooted in natural tones and modern elegance.</p>
-        </div>
-        <div class="service-box">
-            <h3>Market Positioning</h3>
-            <p>Data‑driven insights designed to elevate your presence with refined confidence.</p>
-        </div>
+<section id="hero" class="hero fade-in">
+  <div class="hero-content">
+    <h1>Seracoure Corporate Fusion</h1>
+    <p>Where executive precision meets earthy luxury — crafted for leaders, innovators, and visionaries.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn primary">Explore Services</a>
+      <a href="#contact" class="btn ghost">Book a Consultation</a>
     </div>
+  </div>
 </section>
 
-<section class="section">
-    <h2>Visual Atmosphere</h2>
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=900&q=60" alt="Executive Office">
-        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=60" alt="Architecture">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=60" alt="Workspace">
-        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=60" alt="Luxury Interior">
-    </div>
+<section id="services" class="section fade-in">
+  <h2>Services</h2>
+  <p class="section-tagline">Modern corporate strategy infused with earthy luxury and grounded clarity.</p>
+  <div class="cards">
+    <article class="card">
+      <h3>Executive Strategy</h3>
+      <p>High‑level guidance blending corporate clarity with sustainable direction.</p>
+    </article>
+    <article class="card">
+      <h3>Luxury Brand Architecture</h3>
+      <p>Premium identity systems rooted in natural tones and modern elegance.</p>
+    </article>
+    <article class="card">
+      <h3>Market Positioning</h3>
+      <p>Data‑driven insights designed to elevate your presence with refined confidence.</p>
+    </article>
+  </div>
 </section>
 
-<footer>
-    <p>© 2026 Seracoure — Modern Corporate Earthy Luxury Fusion</p>
-</footer>
-
-</body>
-</html>
+<section id="portfolio" class="section fade-in">
+  <h2>Portfolio</h2>
+  <p class="section-tagline">Selected engagements where Seracoure reshaped brands and leadership narratives.</p>
+  <div class="gallery">
