@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seracoure — Earthy Luxury Corporate Fusion</title>
+
+<style>
+    :root {
+        --terracotta: #C45A3A;
+        --forest: #3F6F55;
+        --light-brown: #C8A47A;
+        --sand: #EFE7DD;
+        --charcoal: #2A2A2A;
+        --gold: #D9C7A1;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        background: var(--sand);
+        color: var(--charcoal);
+        line-height: 1.6;
+    }
+
+    /* HERO */
+    header {
+        background: linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)
+        ),
+        url('https://picsum.photos/1600/900?luxury-office') center/cover no-repeat;
+        height: 92vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 0 20px;
+    }
+    header h1 {
+        font-size: 3.4rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+    header p {
+        font-size: 1.25rem;
+        max-width: 700px;
+        margin: auto;
+        opacity: 0.95;
+    }
+
+    /* SECTION WRAPPER */
+    .section {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+    .section h2 {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.4rem;
+        color: var(--forest);
+        font-weight: 600;
+    }
+
+    /* SERVICES */
+    .services {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .service-box {
+        flex: 1 1 320px;
+        background: white;
+        padding: 30px;
+        border-radius: 14px;
+        border: 1px solid var(--gold);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+    .service-box:hover {
+        transform: translateY(-6px);
+    }
+    .service-box h3 {
+        margin-bottom: 12px;
+        color: var(--terracotta);
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    /* GALLERY */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    .gallery img {
+        width: 100%;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
