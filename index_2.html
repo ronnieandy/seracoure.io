@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Seracoure — Earthy Luxury Corporate Fusion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    body { background:#050505; color:#fff; font-family:Poppins,sans-serif; }
+    a { color:#c9a46b; text-decoration:none; }
+
+    /* HEADER */
+    #header { background:rgba(0,0,0,0.85); padding:10px 0; }
+    #header .logo span { color:#c9a46b; }
+    nav ul { list-style:none; padding:0; margin:0; }
+    nav ul li { display:inline-block; }
+
+    /* MOBILE HEADER */
+    @media (max-width: 768px) {
+      nav ul {
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+        justify-content:center;
+        text-align:center;
+      }
+      #header .logo img { height:40px; }
+    }
+
+    /* SECTIONS */
+    section { padding:70px 0; }
+    .section-title h2 { color:#fff; text-transform:uppercase; }
+    .section-title p { color:#ccc; }
+
+    /* CARDS */
+    .icon-box, .team-member, #contact .info, #contact form {
+      background:#0c0c0c; border:1px solid #222; border-radius:12px; padding:30px;
+    }
+    .icon-box i { font-size:32px; color:#c9a46b; }
+    .portfolio-item { border-radius:12px; overflow:hidden; border:1px solid #222; }
+
+    /* TEAM */
+    .team-member img {
+      width:100%; height:260px; object-fit:cover; border-radius:8px; margin-bottom:15px;
+    }
+    .team-member h4 { color:#fff; margin-bottom:4px; }
+    .team-member .role { color:#c9a46b; font-size:14px; letter-spacing:1px; text-transform:uppercase; }
+
+    /* CONTACT */
+    #contact .info i {
+      font-size:20px; color:#c9a46b; width:30px;
+    }
+    #contact form label { color:#ccc; font-size:14px; margin-bottom:6px; display:block; }
+    #contact form .form-control {
+      background:#050505; border:1px solid #222; color:#fff; border-radius:8px;
+    }
+    #contact form .form-control:focus {
+      background:#050505; color:#fff; border-color:#c9a46b;
+      box-shadow:0 0 0 0.2rem rgba(201,164,107,0.25);
+    }
+    #contact form .form-control::placeholder { color:#777; }
+
+    /* BLOG */
+    .blog-card { background:#0c0c0c; border:1px solid #222; border-radius:12px; overflow:hidden; height:100%; display:flex; flex-direction:column; }
+    .blog-card img { height:200px; object-fit:cover; width:100%; }
+    .blog-card .blog-body { padding:24px; display:flex; flex-direction:column; flex-grow:1; }
+    .blog-card .eyebrow { color:#c9a46b; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+    .blog-card h4 { color:#fff; margin-bottom:10px; }
+    .blog-card p.excerpt { color:#ccc; flex-grow:1; }
+    .blog-card .read-more { display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:14px; background:none; border:none; padding:0; }
+    .blog-card:hover { border-color:#c9a46b; box-shadow:0 0 20px rgba(201,164,107,0.15); transition:0.3s ease; }
+
+    /* ARTICLE MODAL */
+    .eyebrow { color:#c9a46b; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; }
+    .article-meta { color:#888; font-size:13px; margin-top:4px; }
+    .article-hero-img { width:100%; max-height:320px; object-fit:cover; border-radius:10px; border:1px solid #222; }
+    #articleBody p { color:#ddd; font-size:16px; line-height:1.85; margin-bottom:20px; }
+    #articleBody h3 { color:#fff; margin:30px 0 14px; font-family:Raleway,sans-serif; font-size:1.25rem; }
+    #articleModal .modal-content { border-radius:12px; }
+
+    /* FOOTER */
+    #footer { background:#000; border-top:1px solid #222; padding:30px 0; }
+    #footer p { color:#888; margin:0; font-size:14px; }
+
+    /* HOVER EFFECTS */
+    .icon-box:hover { transform:translateY(-6px); transition:0.3s ease; }
+    .portfolio-item img { transition:transform 0.4s ease; }
+    .portfolio-item:hover img { transform:scale(1.05); }
+    .team-member:hover { border-color:#c9a46b; box-shadow:0 0 20px rgba(201,164,107,0.2); transition:0.3s ease; }
+
+    /* MOBILE OPTIMIZATION */
+    img { max-width:100%; height:auto; }
+    h1, h2, h3, h4 { line-height:1.3; }
+
+    @media (max-width: 768px) {
+      section { padding:50px 0; }
+      h1 { font-size:28px; }
+      h2 { font-size:22px; }
+      p { font-size:15px; }
+      .icon-box, .team-member { padding:20px; }
+      .portfolio-item { margin-bottom:20px; }
+      .btn { width:100%; padding:12px; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size:24px; }
+      h2 { font-size:20px; }
+      p { font-size:14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex justify-content-between align-items-center">
+    <h1 class="logo d-flex align-items-center gap-2 mb-0 animate__animated animate__fadeInDown">
+      <img src="https://copilot.microsoft.com/th/id/BCO.495e273c-678d-4d46-a6d9-dd213ffa0e94.png"
+           alt="Seracoure Logo" style="height:48px;">
+      <span>Sera<span style="color:#c9a46b;">coure</span></span>
+    </h1>
+
+    <nav class="navbar">
+      <ul class="d-flex gap-3">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Work</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="#blog" class="nav-link">Blog</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="d-flex align-items-center" style="height:100vh;background:#0a0a0a;">
+  <div class="container" data-aos="fade-up">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 animate__animated animate__fadeInLeft">
+        <h1 class="text-white">Seracoure — <span style="color:#c9a46b;">Design That Grounds Ambition</span></h1>
+        <p class="mt-3">We craft brand systems that merge tactile warmth with executive clarity, helping organizations communicate with confidence and quiet sophistication. Every engagement starts with the same question: what does this organization stand for when the slide deck closes and the room empties?</p>
+        <p>Seracoure works with founders, boards, and marketing teams who are done with brand kits that look impressive in a pitch and forgettable everywhere else. We build identities meant to be lived in — on a homepage, in an annual report, on the wall of a lobby — not just admired once and shelved.</p>
+        <div class="d-flex gap-3 mt-3 flex-wrap">
+          <a href="#services" class="btn btn-outline-warning">Explore Services</a>
+          <a href="#portfolio" class="btn btn-outline-light">See Our Work</a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 text-end animate__animated animate__fadeInRight animate__delay-1s">
+        <img src="https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=900"
+             class="img-fluid rounded" alt="Seracoure Hero">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-dark">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title text-center">
+      <h2>About Us</h2>
+      <p>Seracoure blends grounded aesthetics with structured corporate thinking to create identities that feel timeless, intentional, and unmistakably human.</p>
+    </div>
+
+    <div class="row gy-4 align-items-center">
+
+      <div class="col-lg-6 animate__animated animate__fadeInUp">
+        <p>Our philosophy centers on balance — the warmth of natural textures paired with the discipline of executive‑level communication. Every system we build is crafted to endure, adapt, and elevate your brand across every touchpoint, from a founder's first pitch deck to the packaging on a shelf a decade later.</p>
+        <p>From early‑stage strategy to full digital ecosystems, Seracoure ensures your presence feels cohesive, intentional, and deeply aligned with your mission. We don't hand off a style guide and disappear; we sit in the room while it's implemented, because a brand system is only as good as the discipline behind its rollout.</p>
+        <p>Founded by designers who spent their early careers inside corporate strategy teams, Seracoure exists to close the gap between how a company actually operates and how it presents itself to the world. We believe restraint is a form of confidence, and that the most memorable brands are usually the quietest ones in the room.</p>
+        <p>We keep our roster small on purpose. Every client works directly with the people who'll still be answering the phone in year three, not a rotating account team learning the account from scratch.</p>
+      </div>
+
+      <div class="col-lg-6 animate__animated animate__zoomIn animate__delay-1s">
+        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=900"
+             class="img-fluid rounded" alt="Studio">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title text-center">
+      <h2>Services</h2>
+      <p>Our work spans brand identity, corporate storytelling, and digital experience design — all shaped through an earthy‑luxury lens.</p>
+    </div>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="icon-box animate__animated animate__fadeInUp h-100">
+          <i class="bi bi-diagram-3"></i>
+          <h4 class="mt-3 text-white">Brand Foundations</h4>
+          <p>Identity systems built with clarity and depth, designed to evolve alongside your organization. We start with positioning and voice before a single mark is drawn, so the logo, palette, and typography all trace back to something real about who you are — not a mood board pulled from a competitor's site.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="icon-box animate__animated animate__fadeInUp h-100">
+          <i class="bi bi-briefcase"></i>
+          <h4 class="mt-3 text-white">Executive Communication</h4>
+          <p>High‑impact presentations, investor materials, and corporate narratives that command attention. We write and design board decks, fundraising narratives, and annual reports that hold up under scrutiny from analysts, not just applause from a room full of employees.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="icon-box animate__animated animate__fadeInUp h-100">
+          <i class="bi bi-window-stack"></i>
+          <h4 class="mt-3 text-white">Digital Interfaces</h4>
+          <p>Websites and dashboards that translate your brand language into intuitive, modern experiences. From marketing sites to internal tools, we design interfaces that feel like a natural extension of the brand rather than a template with your logo dropped in.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="icon-box animate__animated animate__fadeInUp h-100">
+          <i class="bi bi-easel"></i>
+          <h4 class="mt-3 text-white">Environments & Print</h4>
+          <p>Signage, event spaces, and printed materials that carry your brand into the physical world with the same precision as your digital presence — because a brand that only exists on screens feels thinner than it should.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="icon-box animate__animated animate__fadeInUp h-100">
+          <i class="bi bi-graph-up-arrow"></i>
+          <h4 class="mt-3 text-white">Positioning & Strategy</h4>
+          <p>Workshops and research that clarify who you serve, what you promise, and why a prospective client should choose you over the three other firms in their inbox. This is the work that happens before the design work, and it's often the work that matters most.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="icon-box animate__animated animate__fadeInUp h-100">
+          <i class="bi bi-book"></i>
+          <h4 class="mt-3 text-white">Brand Governance</h4>
+          <p>Living style guides and training sessions that keep a growing team consistent without making them feel micromanaged — so the brand holds together whether it's a founder or a new hire building the next slide deck.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="bg-dark">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title text-center">
+      <h2>Selected Work</h2>
+      <p>A curated look at how Seracoure transforms abstract goals into grounded, expressive design systems.</p>
+    </div>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="portfolio-item animate__animated animate__zoomIn">
+          <img src="https://images.pexels.com/photos/3184297/pexels-photo-3184297.jpeg?auto=compress&cs=tinysrgb&w=900" class="img-fluid" alt="Corporate Identity">
+          <div class="p-3">
+            <h4 class="text-white">Marstone Advisory</h4>
+            <p>Refined identity system built around structured typography and mineral‑inspired tones. We rebuilt Marstone's entire visual language ahead of a fund-raising round, replacing a decade-old logo with a mark that reads as established without feeling dated.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="portfolio-item animate__animated animate__zoomIn animate__delay-1s">
+          <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=900" class="img-fluid" alt="Investor Deck">
+          <div class="p-3">
+            <h4 class="text-white">Northfield Capital</h4>
+            <p>Investor narrative and pitch system built for clarity under pressure. Every slide was stress-tested against the hardest question a partner might ask, so the deck could survive a real diligence conversation, not just a first meeting.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="portfolio-item animate__animated animate__zoomIn animate__delay-2s">
+          <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=900" class="img-fluid" alt="Digital Dashboard">
+          <div class="p-3">
+            <h4 class="text-white">Alden & Cole</h4>
+            <p>A digital ecosystem translating a century-old brand into a modern interface. We preserved the heritage marks their customers recognized while rebuilding the site and client portal from scratch for a workforce that now expects mobile-first tools.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title text-center">
+      <h2>Our Team</h2>
+      <p>A small, senior studio — every project is led hands-on by the people who founded it.</p>
+    </div>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="team-member text-center animate__animated animate__fadeInUp">
+          <img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Creative Director">
+          <h4>Elena Marchetti</h4>
+          <div class="role">Creative Director</div>
+          <p class="mt-3">Spent seven years leading identity work at a global agency before founding Seracoure to work at a slower, more deliberate pace with fewer, more invested clients.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="team-member text-center animate__animated animate__fadeInUp animate__delay-1s">
+          <img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Strategy Lead">
+          <h4>Julian Ferro</h4>
+          <div class="role">Brand Strategy Lead</div>
+          <p class="mt-3">Former management consultant who leads every positioning workshop, translating boardroom priorities into language a design team can actually build from.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="team-member text-center animate__animated animate__fadeInUp animate__delay-2s">
+          <img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Digital Lead">
+          <h4>Sofia Renard</h4>
+          <div class="role">Digital Experience Lead</div>
+          <p class="mt-3">Builds and codes every site and dashboard Seracoure ships, ensuring the design system holds up in a real browser and not just in a mockup.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title text-center">
+      <h2>From the Studio</h2>
+      <p>Notes on brand strategy, corporate design, and the decisions behind our work — written by the team, not a content mill.</p>
+    </div>
+
+    <div class="row gy-4" id="blog-grid">
+      <!-- populated by the blogPosts array near the bottom of this file -->
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE MODAL (opens on "Read the article") -->
+<div class="modal fade" id="articleModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content" style="background:#0c0c0c; border:1px solid #222; color:#fff;">
+      <div class="modal-header" style="border-color:#222;">
+        <div>
+          <div class="eyebrow" id="articleEyebrow"></div>
+          <h4 class="mt-2 mb-0" id="articleTitle"></h4>
+          <div class="article-meta" id="articleMeta"></div>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="articleImage" src="" alt="" class="article-hero-img mb-4">
+        <div id="articleBody"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="bg-dark">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title text-center">
+      <h2>Contact</h2>
+      <p>Tell us about your organization and where you'd like your brand to go. We reply to every inquiry personally within one business day, and a short intro call is always free.</p>
+    </div>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4">
+        <div class="info animate__animated animate__fadeInUp h-100">
+          <p><i class="bi bi-geo-alt me-2"></i>221 Harbor Row, Suite 4B, New York, NY</p>
+          <p><i class="bi bi-envelope me-2"></i>hello@seracoure.com</p>
+          <p><i class="bi bi-telephone me-2"></i>+1 (212) 555-0148</p>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <form class="animate__animated animate__fadeInUp animate__delay-1s" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Sent';">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-control" placeholder="Your name" required>
+            </div>
+            <div class="col-md-6">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" placeholder="you@company.com" required>
+            </div>
+            <div class="col-12">
+              <label for="message">Message</label>
+              <textarea id="message" rows="4" class="form-control" placeholder="Tell us about your project" required></textarea>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-outline-warning">Send Message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer" class="text-center">
+  <div class="container">
+    <p>&copy; 2026 Seracoure. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  /*
+    SERACOURE BLOG POSTS
+    ---------------------
+    To publish a new post over time: copy one object below, give it a unique
+    "slug", and fill in the fields. It will automatically appear as a new
+    card in the "From the Studio" section, newest first — nothing else in
+    this file needs to change.
+
+    body: an array of paragraph strings. Use { heading: "..." } to insert
+    a subheading partway through the article.
+  */
+  const blogPosts = [
+    {
+      slug: "why-rebrands-fail",
+      title: "Why Most Rebrands Fail Before the Design Even Starts",
+      category: "Strategy",
+      readTime: "8 min read",
+      date: "August 3, 2026",
+      image: "https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      excerpt: "Most rebrand disappointments trace back to the same root cause: a company changed its logo before it changed its answer to \"what do we actually do differently.\" We walk through how to diagnose the real problem before a designer opens a file.",
+      body: [
+        "Every rebrand we've been called in to fix started the same way: a company felt its old identity no longer matched who it had become, so it commissioned a new logo, a new palette, and a new website. Eighteen months later, the new identity felt exactly as forgettable as the old one.",
+        { heading: "The symptom isn't the problem" },
+        "A tired-looking logo is a symptom. The actual problem is almost always upstream of design — an unclear answer to what the company does differently than the three competitors sitting in the same prospect's inbox. When that answer is fuzzy, no amount of typography or color theory can make the brand feel distinct, because there is no distinct thing being communicated.",
+        "We've started asking a blunt question before any design conversation begins: if you disappeared tomorrow, what would your best customer actually miss? If the internal team can't answer that in one sentence, we stop and do that work first.",
+        { heading: "What to fix before you brief a designer" },
+        "Positioning, not palette, is the first draft. Write the one sentence explaining who you serve, what problem you solve, and why you're a better fit than the alternative. If that sentence could apply to a competitor by swapping the company name, it isn't ready.",
+        "Once that sentence is sharp, the design brief writes itself — and the resulting identity actually has something specific to express, rather than a mood board of colors that felt 'premium' in a meeting."
+      ]
+    },
+    {
+      slug: "what-investors-remember",
+      title: "What Investors Actually Remember From a Pitch Deck",
+      category: "Communication",
+      readTime: "6 min read",
+      date: "July 22, 2026",
+      image: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      excerpt: "After sitting in on dozens of fundraising conversations, a pattern emerges: investors forget your market-size slide almost immediately, and remember exactly one story you told about a customer. Here's how to build a deck around that fact.",
+      body: [
+        "We've sat in the room — sometimes literally, sometimes just reviewing the recording afterward — for enough fundraising conversations to notice a pattern that surprises most founders: nobody remembers the market-sizing slide. Not because it's wrong, but because a TAM number never sticks in memory the way a specific story does.",
+        { heading: "One story beats ten data points" },
+        "What investors bring up in the partner meeting after you leave the room is almost always a specific customer moment — the operations manager who used to do something painfully manually and now doesn't, the number that changed for one named account. If your deck doesn't have that story clearly told, on its own slide, in plain language, it's easy to be forgotten between meetings.",
+        "This doesn't mean drop the market sizing or the financials. It means treat them as supporting evidence for the story, not the headline. Build the deck's narrative spine around the customer moment first, then let the numbers back it up.",
+        { heading: "A simple test" },
+        "Before your next pitch, ask someone who wasn't in the room to read the deck cold, then close it and tell you the story back in their own words. If they can't, the deck is optimized for skimming, not remembering — and remembering is what actually moves a partner meeting forward."
+      ]
+    },
+    {
+      slug: "brand-guide-no-one-reads",
+      title: "The Brand Guide No One Reads (and How to Fix It)",
+      category: "Governance",
+      readTime: "5 min read",
+      date: "July 9, 2026",
+      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      excerpt: "Most style guides are written once, distributed as a PDF, and never opened again. We break down the format changes that turn a brand guide into something a growing team will actually reach for before their next deck or campaign.",
+      body: [
+        "Almost every brand guide we've inherited from a previous engagement has the same shape: a beautifully designed 40-page PDF, delivered once at the end of a rebrand, opened by the marketing team a handful of times and then quietly forgotten by everyone else.",
+        { heading: "The format is the failure" },
+        "A PDF is a dead end. It can't be searched easily from Slack, it goes stale the moment a new social platform or slide template appears, and nobody wants to scroll to page 26 to find out if the accent color has a tint rule. The content usually isn't the problem — the format is.",
+        "We now deliver brand guidance as a living, linkable page instead: short, task-oriented sections a new hire can find by searching 'email signature' or 'deck template,' with the assets sitting right next to the rule instead of described in prose three pages earlier.",
+        { heading: "Write it for the person building the next deck, not the archive" },
+        "The best test of a brand guide isn't whether it looks polished — it's whether someone building a slide at 4pm on a Friday can find the answer to their exact question in under thirty seconds. If it takes longer than that, they'll just wing it, and that's how brand consistency quietly erodes one deck at a time."
+      ]
+    }
+  ];
+
+  // Render the preview cards, newest post first.
+  (function renderBlogCards() {
+    const grid = document.getElementById('blog-grid');
+    if (!grid) return;
+
+    const posts = blogPosts.slice().reverse();
+    const delays = ['', 'animate__delay-1s', 'animate__delay-2s'];
+
+    grid.innerHTML = posts.map((post, i) => `
+      <div class="col-lg-4 col-md-6">
+        <div class="blog-card animate__animated animate__fadeInUp ${delays[i % delays.length]}">
+          <img src="${post.image}" alt="${post.title}">
+          <div class="blog-body">
+            <div class="eyebrow">${post.category} · ${post.readTime}</div>
+            <h4>${post.title}</h4>
+            <p class="excerpt">${post.excerpt}</p>
+            <button type="button" class="read-more" data-slug="${post.slug}">Read the article <i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    grid.querySelectorAll('.read-more').forEach(btn => {
+      btn.addEventListener('click', () => openArticle(btn.getAttribute('data-slug')));
+    });
+  })();
+
+  // Open a post in the on-page modal (no second file/page needed).
+  function openArticle(slug) {
+    const post = blogPosts.find(p => p.slug === slug);
+    if (!post) return;
+
+    document.getElementById('articleEyebrow').textContent = `${post.category} · ${post.readTime}`;
+    document.getElementById('articleTitle').textContent = post.title;
+    document.getElementById('articleMeta').textContent = post.date;
+    document.getElementById('articleImage').src = post.image;
+    document.getElementById('articleImage').alt = post.title;
+
+    document.getElementById('articleBody').innerHTML = post.body.map(block => {
+      if (typeof block === 'string') return `<p>${block}</p>`;
+      if (block.heading) return `<h3>${block.heading}</h3>`;
+      return '';
+    }).join('');
+
+    const modal = new bootstrap.Modal(document.getElementById('articleModal'));
+    modal.show();
+  }
+
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+</script>
+
+</body>
+</html>
